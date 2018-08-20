@@ -1,0 +1,19 @@
+.circle {
+    background-color: black;
+    height: 300px;
+    width: 300px;
+    border-radius: 100%;
+}
+
+p {
+    color: white;
+    text-align: center;
+    margin-top: 50%;
+}
+
+.box {
+    width: 49.3%;
+    height: 49.3%;
+    border: 1px white solid;
+    float: left;
+}

@@ -1,0 +1,16 @@
+td {
+    height: 30px;
+    width: 1000px;
+}
+
+.red {
+    background-color: darkred;
+}
+
+img {
+    position: fixed;
+    top: 10px;
+    left: 9px;
+    height: 236px;
+    width: 30%;
+}

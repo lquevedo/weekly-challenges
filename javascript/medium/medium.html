@@ -1,0 +1,34 @@
+<!-- MEDIUM: Write a program to tell if someone is shouting (typing in all caps), whispering (typing in all lowercase), or neither.
+     Use prompt to get user input, and then console log whether the user was shouting, whispering, or talking normally. -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+
+<body>
+
+    <script>
+        // get user input
+        var word = prompt('Write something here');
+        // find out if user is typing in all caps, lowercase or neither
+        if (word === word.toUpperCase()) {
+            console.log('STOP SHOUTING!')
+        } else if (word === word.toLowerCase()) {
+            console.log('SPEAK UP!')
+        } else {
+            console.log('You\'re speaking normally')
+        }
+    //console log results
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,60 @@
+<!-- VERY HARD: Create a simple calculator that prompts the user for a number, an operator (either +, -, * or /) and another number, 
+and then uses the functions created in the hard challenge to output the value in sentence form.
+Example output: "3 + 4 = 7" -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Very Hard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <script src="main.js"></script>
+</head>
+
+<body>
+
+    <script>
+
+        function add(a, b) {
+            return parseInt(a) + parseInt(b);
+        }
+
+        function subtract(a, b) {
+            return parseInt(a) - parseInt(b);
+        }
+
+        function multiply(a, b) {
+            return parseInt(a) * parseInt(b);
+        }
+
+        function divide(a, b) {
+            return parseInt(a) / parseInt(b);
+        }
+
+        //ask user for a number
+        var a = prompt('Type in any number:');
+        //ask for an operator
+        var operator = prompt('Type in a function (+, -, *, /)');
+        //ask for another number
+        var b = prompt('Type in a second number');
+        //give user their input
+
+        if (operator == '+') {
+            console.log(a + operator + b + '=' + add(a, b))
+        } else if (operator == '-') {
+            console.log(a + operator + b + '=' + subtract(a, b))
+        } else if (operator == '*') {
+            console.log(a + operator + b + '=' + multiply(a, b))
+        } else if (operator == '/') {
+            console.log(a + operator + b + '=' + divide(a, b))
+        }
+
+
+    </script>
+
+</body>
+
+</html>

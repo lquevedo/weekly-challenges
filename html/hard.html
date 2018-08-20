@@ -1,0 +1,57 @@
+<!--HARD: Create an HTML form with a GET method that will collect the following: First Name, Last Name, Gender (have them pick), Favorite sport (from a dropdown list of at least 5), Checkboxes for what you like on your pizza (from a list of at least 5) and
+the submit button should read, "Save".-->
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <form action="#" method="get">
+    <div>     
+        <label for="firstName">First Name:</label><br>
+        <input type="text" id="firstName" name="firstName">
+    </div>
+    <div>     
+        <label for="lastName">Last Name:</label><br>
+        <input type="text" id="lastName" name="lastName">
+    </div>
+
+    <div>     
+        <p>Gender:</p>
+        <label for="gender">Male</label>
+        <input type="radio" name="gender" value="male" checked>
+
+        <label for="gender">Female</label>
+        <input type="radio" name="gender" value="female">
+
+        <label for="gender">Other</label>
+        <input type="radio" name="gender" value="other">
+    </div>
+
+    <div> 
+        <p>Favorite Sports:</p>
+        <select name="sports">
+        <option value="soccer">Soccer</option>
+        <option value="basketball">Basketball</option>
+        <option value="football">Football</option>
+        <option value="tennis">Tennis</option>
+        <option value="golf">Golf</option>
+        </select>
+    </div> 
+    
+    <div>
+        <p>Favorite Toppings:</p>
+        <label for="Pepperoni">
+        <input type="checkbox" name="topping" value="Pepperoni" checked>Pepperoni<br></label>
+        <label for="Sausage">
+        <input type="checkbox" name="topping" value="Sausage">Sausage<br></label>
+        <label for="Mushrooms">
+        <input type="checkbox" name="topping" value="Mushrooms">Mushrooms<br></label>
+        <label for="Bacon">
+        <input type="checkbox" name="topping" value="Bacon">Bacon<br></label>
+        <label for="Pineapple">
+        <input type="checkbox" name="topping" value="Pineapple">Pineapple<br></label>
+    </div>
+    <input type="submit" value="Save">
+    </form>
+</body>
+</html>

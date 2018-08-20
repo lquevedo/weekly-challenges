@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+    <script>
+
+        function staircase(n) {
+            // var space, line, stairs;
+
+            // for (var i = 0; i < n; i++) {
+            //     space = n - i - 1;
+            //     console.log()
+            // }
+            
+
+            var line = Array(n + 1).fill(' ');
+            line[n] = '';
+            for (var i = n - 1; i >= 0; i--) {
+                line[i] = '#';
+                console.log(line.join(''));
+            }
+        }
+
+        staircase(10);
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,156 @@
+<!-- Using the data below, create an object constructor that will take in a customer's first name, last name, gender & address as well as an array of products they have ordered and will generate a confirmation email that reads:
+===================================
+Dear {Ms./Mr.} {last name}:
+ 
+Thank you for your order! The following items will be sent out to you today and you should expect them in to arrive in 5 days. Your order will be sent to: {street}, {city}, {state} {zip}.
+ 
+Your Order:
+{quantity} {item name} - {item description} {price}
+... repeat for all items
+ 
+Your total is {total price}
+ 
+If you have any concerns, please contact customer service.
+ 
+Sincerely,
+Joe Business-Guy
+===================================
+ 
+Use the following order inf o arrays:
+ 
+order 1: 
+    5 pairs of socks. These socks will hug your feet in a way that will make you feel like your grandmother knitted them herself. $5.00 each.
+    3 shirts. Helping people feel cool in India’s intense heat made the fabric famous – so imagine how good our Madras Shirt will feel where you live. But we weren’t content to simply recreate the fabric. Although ours is woven in India like the original, we’ve improved it – with single-ply yarns that are ring­spun for strength and improved comfort. $25 each
+     
+     
+order 2:
+   1 Toddler Girls Jacquard Twirl Dress. This gathered waist twirl dress is perfect for dress-up days and special occasions, and she’ll absolutely adore the pretty prints & patterns. $22.00
+   1 ClassMate Medium Backpack - Print. ClassMate® Medium Backpack’s kid-friendly features go beyond carrying capacity. For one thing, it’s made from durable, 600-denier polyester with a water-repellent finish. The no-tip base is 1200-denier pack cloth and the padded shoulder straps are securely stitched, so this bookbag can take all the dropping, dragging and tugging their school day has in store. In fact, we recommend making sure this is the pack they really want — it’s going to be with them a long time! $39.00
+   1 School Uniform Women's Scallop Ballet Flats. Feminine, traditional, and versatile, with a touch of scalloped detailing to set them apart from your typical ballets. Foam footbeds cushion you every step of the way, making them perfect for running errands in style, dressing up your jeans and tees, or walking around your office. $48.00
+    
+   Make up your own customer information -->
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body>
+
+    <script>
+
+        //Products available
+        var products = {
+            socks: {
+                name: "pairs of socks",
+                desc: "These socks will hug your feet in a way that will make you feel like your grandmother knitted them herself.",
+                price: 5
+            },
+            shirts: {
+                name: 'shirts',
+                desc: 'Helping people feel cool in India\'s intense heat made the fabric famous – so imagine how good our Madras Shirt will feel where you live. But we weren\'t content to simply recreate the fabric. Although ours is woven in India like the original, we’ve improved it – with single-ply yarns that are ring­spun for strength and improved comfort.',
+                price: 25
+            },
+            dresses: {
+                name: 'Toddler Girls Jacquard Twirl Dress',
+                desc: 'This gathered waist twirl dress is perfect for dress-up days and special occasions, and she\'ll absolutely adore the pretty prints & patterns.',
+                price: 22
+            },
+            backpacks: {
+                name: 'ClassMate Medium Backpack - Print',
+                desc: 'ClassMate® Medium Backpack’s kid-friendly features go beyond carrying capacity. For one thing, it’s made from durable, 600-denier polyester with a water-repellent finish. The no-tip base is 1200-denier pack cloth and the padded shoulder straps are securely stitched, so this bookbag can take all the dropping, dragging and tugging their school day has in store. In fact, we recommend making sure this is the pack they really want — it’s going to be with them a long time!',
+                price: 39
+            },
+            flats: {
+                name: 'School Uniform Womens Scallop Ballet Flats',
+                desc: 'Feminine, traditional, and versatile, with a touch of scalloped detailing to set them apart from your typical ballets. Foam footbeds cushion you every step of the way, making them perfect for running errands in style, dressing up your jeans and tees, or walking around your office.',
+                price: 48
+            }
+        };
+
+        //Object constuctor for new customers
+        function Customer(firstName, lastName, gender, street, city, state, zip) {
+            this.firstName = firstName;
+            this.lastName = lastName;
+            this.gender = gender;
+            this.street = street;
+            this.city = city;
+            this.state = state;
+            this.zip = zip;
+            // empty array to push products into
+            this.products = [];
+            //  for loop that adds the entire order together
+            this.totalPrice = function () {
+                var total = 0;
+                for (var i = 0; i < this.products.length; i++) {
+                    total += this.products[i].quantity * this.products[i].price;
+                }
+                return total;
+            }
+        }
+
+        //Pushing products into products[] array
+        Customer.prototype.addProducts = function (quantity, item) {
+            var product = {
+                quantity: quantity,
+                name: item.name,
+                desc: item.desc,
+                price: item.price
+            }
+            this.products.push(product)
+        };
+
+        //empty customer array
+        var customerArray = [];
+        var customerOne = new Customer('Luis', 'Quevedo', 'Mr.', '6000 Olinda St', 'Charlotte', 'NC', '28215');
+
+        var numberOfSocks = parseInt(prompt('How many pairs of socks would you like to buy? $5.00 each'));
+        var numberOfShirts = parseInt(prompt('How many shirts would you like to buy? $25.00 each'));
+
+        // how to handle adding products
+        customerOne.addProducts(numberOfSocks, products.socks);
+        customerOne.addProducts(numberOfShirts, products.shirts);
+
+        var customerTwo = new Customer('Lionel', 'Messi', 'Mr.', '123 Barcelona Dr', 'Madrid', 'SC', '28215');
+
+        var numberOfDresses = parseInt(prompt('How many dresses would you like to buy? $22.00 each'));
+        var numberOfBackpacks = parseInt(prompt('How many backpacks would you like to buy? $39.00'));
+        var numberOfFlats = parseInt(prompt('How many flats would you like to buy? $48.00 each'));
+
+        customerTwo.addProducts(numberOfDresses, products.dresses);
+        customerTwo.addProducts(numberOfBackpacks, products.backpacks);
+        customerTwo.addProducts(numberOfFlats, products.flats);
+
+        //pushes customers into array
+        customerArray.push(customerOne, customerTwo);
+
+        //function used to display confirmation email
+        function displayCustomerLetter(customers) {
+            for (var i = 0; i < customers.length; i++) {
+                console.log(`Dear ${customers[i].gender} ${customers[i].lastName},`);
+                console.log(`Thank you for your order! The following items will be sent out to you today and you should expect them in to arrive in 5 days. Your order will be sent to: ${customers[i].street} ${customers[i].city} ${customers[i].state}, ${customers[i].zip}`);
+                console.log(`Your order:`);
+                for (var p = 0; p < customers[i].products.length; p++) {
+                    console.log(
+                        `${customers[i].products[p].quantity} ${customers[i].products[p].name}. ${customers[i].products[p].desc} $${customers[i].products[p].price} each `
+                    );
+                }
+                console.log(`Your total is $${customers[i].totalPrice()}`);
+                console.log(`If you have any concerns, please contact customer service.`);
+                console.log(`Sincerely, Joe Business Guy`);
+                console.log('===================================');
+            }
+        }
+
+        displayCustomerLetter(customerArray);
+
+    </script>
+
+</body>
+
+</html>
